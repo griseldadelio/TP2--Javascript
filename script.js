@@ -4,7 +4,7 @@ precioMaquina(componentes): recibe un array de componentes y devuelve el precio 
 armar con esos componentes, que es la suma de los precios de cada componente incluido. -- */
 
 const precioMaquina = (componentes) => {
-    var sumaComponente = 0;
+    let sumaComponente = 0;
     for (let n = 0; n < componentes.length; n++) {
         for (let i = 0; i < local.precios.length; i++) {
             if (componentes[n] === local.precios[i].componente) {
@@ -120,7 +120,7 @@ huboVentas(mes, anio): que indica si hubo ventas en un mes determinado. El mes e
 que va desde el 1 (enero) hasta el 12 (diciembre).    
 -- */
 
-function huboVentas(mes, anio) {
+const huboVentas = (mes, anio) => {
     for (let i = 0; i < local.ventas.length; i++) {
         if (ventasMes(mes, anio) !== 0) {
             return true
@@ -169,9 +169,9 @@ console.log(local.ventas)
 /* -- PUNTO A
 Crear la función ventasSucursal(sucursal), que obtiene las ventas totales realizadas por una sucursal sin límite de fecha.
 -- */
-function ventasSucursal(sucursal) {
-    var total = 0;
-    for (let venta of local.ventas) {
+const ventasSucursal = (sucursal) => {
+    let total = 0;
+    for (venta of local.ventas) {
         if (venta.sucursal === sucursal) {
             total += precioMaquina(venta.componentes);
         }
@@ -186,9 +186,9 @@ Las funciones ventasSucursal y ventasVendedora tienen mucho código en común, y
 pero trabajando con una propiedad distinta. Entonces, ¿cómo harías para que ambas funciones reutilicen código 
 y evitemos repetir?
 -- */
-function ventasParametroIndistinto(parametro) {
-    var total = 0;
-    for (let venta of local.ventas) {
+const ventasParametroIndistinto = (parametro) => {
+    let total = 0;
+    for (venta of local.ventas) {
         if (venta.sucursal === parametro || venta.nombreVendedora === parametro) {
             total += precioMaquina(venta.componentes);
         }
